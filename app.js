@@ -14,6 +14,8 @@ const localStrategy = require("passport-local");
 const User = require('./models/User');
 
 const userrouter = require("./routes/user.js");
+const studentrouter = require("./routes/student.js");
+const courserouter = require("./routes/course.js");
 
 
 const multer = require('multer');
@@ -108,6 +110,8 @@ function isAdmin(req, res, next) {
 }
 
 app.use("/user",userrouter);
+app.use("/",studentrouter);
+app.use("/",courserouter);
 
 app.get("/", ensureAuthenticated, async (req,res)=>{
   res.render("./index.ejs")
