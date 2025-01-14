@@ -101,11 +101,11 @@ router.post("/login", async (req, res, next) => {
             }
             // Flash a success message and redirect based on user role
             req.flash('success_msg', 'You have successfully logged in!');
-            // if (user.role === 'admin') {
-            //     res.redirect("/admin"); // Redirect to admin dashboard
-            // } else {
+            if (user.role === 'admin') {
+                res.render("./admin.ejs"); // Redirect to admin dashboard
+            } else {
                 res.redirect("/"); // Redirect to student page
-            // }
+            }
 
             // Send login email notification
             // const transporter = nodemailer.createTransport({
